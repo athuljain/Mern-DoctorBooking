@@ -22,5 +22,7 @@ const router = express.Router();
 router.post("/register", userController.register); // Register a new user
 router.post("/login", userController.login); // User login
 router.post('/book-appointment', authMiddleware, userController.createBooking);
+router.get('/user-details', authMiddleware, userController.getUserDetails);
+
 
 module.exports = router;

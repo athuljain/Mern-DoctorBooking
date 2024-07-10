@@ -105,5 +105,22 @@ const createBooking = async (req, res) => {
     }
 };
 
-module.exports = { register, login, createBooking };
 
+// Get user details function
+const getUserDetails = async (req, res) => {
+    try {
+        const userId = req.userId; // Extracted from token
+        const user = await User.findById(userId).populate('bookings');
+        
+        if (!user) {
+            return res.status(404).json({ success: false, message: 'User not found' });
+        }
+        
+        res.status(200).json({ success: true, data: user });
+    } catch (error) {
+        console.error('Error fetching user details:', error);
+        res.status(500).json({ success: false, message: 'Internal server error', error: error.message });
+    }
+};
+
+module.exports = { register, login, createBooking, getUserDetails };
