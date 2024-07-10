@@ -98,6 +98,8 @@
 
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+// const usermodel = require('../models/usermodel');
+const User = require('../models/usermodel');
 
 // Hardcoded doctor details
 const doctorDetails = {
@@ -109,11 +111,7 @@ const doctorDetails = {
     // profilePicture: 'path/to/profile-picture.jpg'
 };
 
-// // Pre-hash the password for comparison
-// const saltRounds = 10;
-// bcrypt.hash(doctorDetails.password, saltRounds).then(hashedPassword => {
-//     doctorDetails.password = hashedPassword;
-// });
+
 
 const adminLogin = async (req, res) => {
     try {
@@ -136,4 +134,17 @@ const adminLogin = async (req, res) => {
     }
 };
 
-module.exports = { adminLogin };
+
+// Get all users function
+const getAllUsers = async (req, res) => {
+    try {
+        const users = await User.find().populate('bookings');
+        res.status(200).json({ success: true, data: users });
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        res.status(500).json({ success: false, message: 'Internal server error', error: error.message });
+    }
+};
+
+
+module.exports = { adminLogin, getAllUsers };
