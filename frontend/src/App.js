@@ -24,6 +24,7 @@ function App() {
   const [phone, setPhone] = useState("");
   const [role, setRole] = useState("");
   const [gender, setGender] = useState("");
+  const [age,setAge]=useState("")
   // const [user, setUser] = useState(null);
 
   const [user, setUser] = useState(null);
@@ -38,7 +39,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <MyProvider value={{ email, setEmail, name, setName, password, setPassword, phone, setPhone, role, setRole, gender, setGender, user, setUser }}>
+        <MyProvider value={{ email, setEmail, name, setName, password, setPassword, phone, setPhone, role, setRole,age,setAge, gender, setGender, user, setUser }}>
           <Navbar user={user} setUser={setUser} />
           <Routes>
             <Route path='/' element={<Home />} />

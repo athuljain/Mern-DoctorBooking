@@ -1,6 +1,6 @@
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState,  } from 'react';
 import axios from 'axios';
 import "../Css/MyBooking.css";
 
@@ -26,19 +26,19 @@ const MyBooking = () => {
 
     const [bookedSlots, setBookedSlots] = useState([]);
 
-    useEffect(() => {
-        const fetchBookedSlots = async () => {
-            if (formData.appointmentDate) {
-                try {
-                    const response = await axios.get(`http://localhost:5001/api/v1/booking/booked-slots?date=${formData.appointmentDate}`);
-                    setBookedSlots(response.data.bookedSlots);
-                } catch (error) {
-                    console.error('Error fetching booked slots:', error);
-                }
-            }
-        };
-        fetchBookedSlots();
-    }, [formData.appointmentDate]);
+    // useEffect(() => {
+    //     const fetchBookedSlots = async () => {
+    //         if (formData.appointmentDate) {
+    //             try {
+    //                 const response = await axios.get(`http://localhost:5001/api/v1/booking/booked-slots?date=${formData.appointmentDate}`);
+    //                 setBookedSlots(response.data.bookedSlots);
+    //             } catch (error) {
+    //                 console.error('Error fetching booked slots:', error);
+    //             }
+    //         }
+    //     };
+    //     fetchBookedSlots();
+    // }, [formData.appointmentDate]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -53,42 +53,7 @@ const MyBooking = () => {
         }
     };
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    
-    //     // Check if the selected slot is already booked
-    //     if (bookedSlots.includes(formData.slot)) {
-    //         alert('Slot is already booked. Please choose another slot.');
-    //         return;
-    //     }
-    //     let email=user.email
 
-    //     // Log the formData to verify what is being sent
-    //     console.log('Form data being sent:', { ...formData, email });
-
-    
-    //     try {
-    //         const response = await axios.post('http://localhost:5001/api/v1/booking/book', { ...formData, email});
-    //         console.log('Booking created:', response.data);
-    //         alert('Booking Successful!');
-    //         // Optionally, reset form fields
-    //         setFormData({
-    //             name: '',
-    //             age: '',
-    //             slot: '',
-    //             appointmentDate: '',
-    //             ticketPrice: 100
-    //         });
-    //         setBookedSlots([]);
-    //     } catch (error) {
-    //         console.error('Error creating booking:', error.response);
-    //         if (error.response && error.response.status === 400) {
-    //             alert('Failed to book slot. Please choose another slot.');
-    //         } else {
-    //             alert('Failed to create booking. Please try again later.');
-    //         }
-    //     }
-    // };
     
 
     const handleSubmit = async (e) => {
@@ -106,7 +71,7 @@ const MyBooking = () => {
         console.log('Form data being sent:', { ...formData, email, userId });
     
         try {
-            const response = await axios.post('http://localhost:5001/api/v1/booking/book', { ...formData, email, userId });
+            const response = await axios.post('http://localhost:5001/api/v1/users/book-appointment', { ...formData, email, userId });
             console.log('Booking created:', response.data);
             alert('Booking Successful!');
             // Optionally, reset form fields
