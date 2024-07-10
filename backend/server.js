@@ -34,15 +34,15 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors(corsOptions));
 
-app.use("/api/v1/auth", adminRoute);
+app.use("/api", adminRoute);
 app.use("/api/v1/users", userRoute);
 
-app.get("/generate-token", (req, res) => {
-  const token = jwt.sign({ id: "doctor_id" }, process.env.JWT_SECRET_KEY, {
-    expiresIn: "1h",
-  });
-  res.send({ token });
-});
+// app.get("/generate-token", (req, res) => {
+//   const token = jwt.sign({ id: "doctor_id" }, process.env.JWT_SECRET_KEY, {
+//     expiresIn: "1h",
+//   });
+//   res.send({ token });
+// });
 
 connect().then(() => {
   app.listen(port, () => {
