@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import {  BrowserRouter, Routes, Route } from 'react-router-dom';
-
-
 import LoginPage from './Components/Login.jsx';
 import RegisterPage from './Components/Register.jsx';
-
 import AuthContext from './Context/AuthContext.js';
+import Home from './Components/Home.jsx';
+import BookAppointmentPage from './Components/BookAppointment.jsx';
 
 function App() {
 
@@ -51,6 +50,8 @@ const values={
        <Routes>
         <Route path='/' element={<LoginPage />}/>
         <Route path='/register' element={<RegisterPage />}/>
+        <Route path='/home' element={<Home />}/>
+        <Route path='/booking' element={<BookAppointmentPage />}/>
        </Routes>
        </AuthContext.Provider>
        </BrowserRouter>

@@ -1,28 +1,36 @@
+
+
 import React, { useContext, useState } from 'react';
 import axios from 'axios';
-
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import AuthContext from '../Context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterPage = () => {
 
-
-const { user, setUser, logout,login,age, setAge,name, setName,
-    email,setEmail,password, setPassword,
-    phone, setPhone, gender, setGender}=useContext(AuthContext)
-
+    const nav=useNavigate()
+    const { name, setName, email, setEmail, password, setPassword, phone, setPhone, gender, setGender, age, setAge } = useContext(AuthContext);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5001/api/v1/users/register', { name, email, password, phone, gender, age });
-            
+            const response = await axios.post('http://localhost:5001/api/v1/users/register', { name, email, password, phone, gender, age });
+            toast.success('Registration successful!');
+            nav('/')
         } catch (error) {
-            console.error('Registration failed:', error);
+            if (error.response && error.response.data) {
+                toast.error(`Registration failed: ${error.response.data.message}`);
+
+            } else {
+                toast.error('Registration failed: An unknown error occurred.');
+            }
         }
     };
 
     return (
         <div>
+            <ToastContainer />
             <h2>Register</h2>
             <form onSubmit={handleSubmit}>
                 <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" required />
