@@ -39,7 +39,9 @@ const register = async (req, res) => {
     }
 };
 
-// Login function
+
+// controllers/userController.js
+
 const login = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -48,28 +50,32 @@ const login = async (req, res) => {
             return res.status(404).json({ message: 'User Not Found' });
         }
 
-        // Compare hashed password
         const match = await bcrypt.compare(password, user.password);
         if (!match) {
             return res.status(401).json({ message: 'Invalid Password' });
         }
 
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY, { expiresIn: '1d' });
-
         
-      res.cookie("token", token, {
-        httpOnly: true,
-        secure: true,
-        maxAge: 1000 * 60 * 60,
-      });
-      res.setHeader("Authorization", token);
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: true,
+            maxAge: 1000 * 60 * 60,
+        });
+        res.setHeader("Authorization", token);
 
-        res.status(200).json({ message: 'Login Success', success: true, token });
+        // Exclude password from the user object
+        const { password: pwd, ...userDetails } = user.toObject();
+
+        res.status(200).json({ message: 'Login Success', success: true, token, user: userDetails });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: `Error in Login: ${error.message}` });
     }
 };
+
+
+
 
 // Create Booking function
 const createBooking = async (req, res) => {
@@ -95,6 +101,7 @@ const createBooking = async (req, res) => {
 
         // Add booking to user's bookings
         const user = await User.findById(userId);
+
         user.bookings.push(savedBooking._id);
         await user.save();
 
