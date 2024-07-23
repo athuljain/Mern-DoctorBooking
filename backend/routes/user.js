@@ -10,6 +10,6 @@ router.post("/register", userController.register); // Register a new user
 router.post("/login", userController.login); // User login
 router.post('/book-appointment', authMiddleware, userController.createBooking);
 router.get('/user-details', authMiddleware, userController.getUserDetails);
-
+router.get('/booked-slots',userController.getBookedSlots)
 
 module.exports = router;

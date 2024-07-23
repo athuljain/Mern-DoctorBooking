@@ -130,4 +130,25 @@ const getUserDetails = async (req, res) => {
     }
 };
 
-module.exports = { register, login, createBooking, getUserDetails };
+
+// Fetch booked slots for a specific date
+const getBookedSlots = async (req, res) => {
+    const { date } = req.query;
+
+    if (!date) {
+        return res.status(400).json({ success: false, message: 'Date is required' });
+    }
+
+    try {
+        const bookings = await Booking.find({ appointmentDate: date });
+
+        const bookedSlots = bookings.map(booking => booking.slot);
+
+        res.status(200).json({ success: true, bookedSlots });
+    } catch (error) {
+        console.error('Error fetching booked slots:', error);
+        res.status(500).json({ success: false, message: 'Internal server error', error: error.message });
+    }
+};
+
+module.exports = { register, login, createBooking, getUserDetails,getBookedSlots };
