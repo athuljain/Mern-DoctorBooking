@@ -75,44 +75,6 @@ const login = async (req, res) => {
 };
 
 
-
-
-// // Create Booking function
-// const createBooking = async (req, res) => {
-//     const { slot, appointmentDate } = req.body;
-//     const ticketPrice = 100; // Constant ticket price
-//     const userId = req.userId; // Extracted from token
-
-//     // Validate fields
-//     if (!slot || !appointmentDate) {
-//         return res.status(400).json({ success: false, message: 'Missing required fields' });
-//     }
-
-//     try {
-//         // Check if the slot is available
-//         const existingBooking = await Booking.findOne({ slot, appointmentDate });
-//         if (existingBooking) {
-//             return res.status(400).json({ success: false, message: 'Slot is already booked' });
-//         }
-
-//         // Create new booking
-//         const newBooking = new Booking({ slot, appointmentDate, ticketPrice, user: userId });
-//         const savedBooking = await newBooking.save();
-
-//         // Add booking to user's bookings
-//         const user = await User.findById(userId);
-
-//         user.bookings.push(savedBooking._id);
-//         await user.save();
-
-//         res.status(200).json({ success: true, message: 'Booked Successfully', data: savedBooking });
-//     } catch (error) {
-//         console.error('Error creating booking:', error);
-//         res.status(500).json({ success: false, message: 'Internal server error', error: error.message });
-//     }
-// };
-
-
 // controllers/userController.js
 const createBooking = async (req, res) => {
     const { slot, appointmentDate } = req.body;
@@ -168,9 +130,28 @@ const getUserDetails = async (req, res) => {
 };
 
 
-// Fetch booked slots for a specific date
+// // Fetch booked slots for a specific date
+// const getBookedSlots = async (req, res) => {
+//     const { date } = req.query;
+
+//     if (!date) {
+//         return res.status(400).json({ success: false, message: 'Date is required' });
+//     }
+
+//     try {
+//         const bookings = await Booking.find({ appointmentDate: date });
+
+//         const bookedSlots = bookings.map(booking => booking.slot);
+
+//         res.status(200).json({ success: true, bookedSlots });
+//     } catch (error) {
+//         console.error('Error fetching booked slots:', error);
+//         res.status(500).json({ success: false, message: 'Internal server error', error: error.message });
+//     }
+// };
+
 const getBookedSlots = async (req, res) => {
-    const { date } = req.query;
+    const { date } = req.body;
 
     if (!date) {
         return res.status(400).json({ success: false, message: 'Date is required' });
@@ -187,5 +168,7 @@ const getBookedSlots = async (req, res) => {
         res.status(500).json({ success: false, message: 'Internal server error', error: error.message });
     }
 };
+
+
 
 module.exports = { register, login, createBooking, getUserDetails,getBookedSlots };

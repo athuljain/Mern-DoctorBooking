@@ -1,5 +1,4 @@
 
-
 // import React, { useEffect, useState } from 'react';
 // import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import LoginPage from './Components/Login.jsx';
@@ -30,9 +29,7 @@
 //         localStorage.setItem('user', JSON.stringify(user));
 //         setUser({ token, ...user });
 //     };
-//     console.log("logindata",login);
 
-    
 //     const logout = () => {
 //         localStorage.removeItem('token');
 //         localStorage.removeItem('user');
@@ -64,16 +61,13 @@
 
 // export default App;
 
-
-
-
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LoginPage from './Components/Login.jsx';
-import RegisterPage from './Components/Register.jsx';
-import AuthContext from './Context/AuthContext.js';
-import Home from './Components/Home.jsx';
-import BookAppointmentPage from './Components/BookAppointment.jsx';
+import LoginPage from './Components/Login';
+import RegisterPage from './Components/Register';
+import AuthContext from './Context/AuthContext';
+import Home from './Components/Home';
+import BookAppointmentPage from './Components/BookAppointment';
 
 function App() {
     const [name, setName] = useState('');
@@ -128,4 +122,3 @@ function App() {
 }
 
 export default App;
-

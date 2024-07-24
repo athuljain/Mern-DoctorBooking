@@ -11,7 +11,7 @@ const adminRoute = require("./routes/admin");
 const userRoute = require("./routes/user");
 
 const app = express();
-const port = process.env.PORT || 8000;
+const port = process.env.PORT 
 
 const corsOptions = {
   origin: true,

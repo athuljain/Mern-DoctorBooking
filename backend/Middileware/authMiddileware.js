@@ -1,6 +1,3 @@
-
-
-
 // middleware/authMiddleware.js
 const jwt = require('jsonwebtoken');
 
@@ -10,9 +7,6 @@ const authMiddleware = (req, res, next) => {
     if (!authHeader) {
         return res.status(401).json({ message: 'Authentication required: No token provided' });
     }
-
-
-
     try {
         const decoded = jwt.verify(authHeader, process.env.JWT_SECRET_KEY);
         req.userId = decoded.id;

@@ -1,6 +1,3 @@
-
-
-
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -14,3 +11,8 @@ const userSchema = new Schema({
     bookings: [{ type: Schema.Types.ObjectId, ref: 'Booking' }]
 });
 module.exports = mongoose.model('User', userSchema);
+
+
+
+
+

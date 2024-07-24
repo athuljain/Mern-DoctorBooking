@@ -1,8 +1,9 @@
 
 
 
-// import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect, useContext } from 'react';
 // import axios from 'axios';
+// import AuthContext from '../Context/AuthContext';
 
 // const MyBooking = () => {
 //     const validSlots = [
@@ -13,14 +14,14 @@
 //         "15:00 - 15:30"
 //     ];
 
-//     const user = JSON.parse(localStorage.getItem('LoggedInUser'));
+//     const { user } = useContext(AuthContext);
 
 //     const [formData, setFormData] = useState({
 //         name: '',
 //         age: '',
 //         slot: '',
 //         appointmentDate: '',
-//         ticketPrice: 100 // Constant ticket price, adjust as needed
+//         ticketPrice: 100
 //     });
 
 //     const [bookedSlots, setBookedSlots] = useState([]);
@@ -29,7 +30,7 @@
 //         const fetchBookedSlots = async () => {
 //             if (formData.appointmentDate) {
 //                 try {
-//                     const response = await axios.get(`http://localhost:5001/api/v1/users/book-appointment`);
+//                     const response = await axios.get(`http://localhost:5001/api/v1/users/booked-slots?date=${formData.appointmentDate}`);
 //                     setBookedSlots(response.data.bookedSlots);
 //                 } catch (error) {
 //                     console.error('Error fetching booked slots:', error);
@@ -47,33 +48,24 @@
 //     const handleSubmit = async (e) => {
 //         e.preventDefault();
 
-//         // Check if the user is logged in
 //         if (!user) {
 //             alert('You need to be logged in to book an appointment.');
 //             return;
 //         }
 
-//         // Check if the selected slot is already booked
 //         if (bookedSlots.includes(formData.slot)) {
 //             alert('Slot is already booked. Please choose another slot.');
 //             return;
 //         }
 
-//         const email = user.email;
-//         const token = user.token;
-
-//         // Log the formData to verify what is being sent
-//         console.log('Form data being sent:', { ...formData, email });
-
 //         try {
-//             const response = await axios.post('http://localhost:5001/api/v1/booking/book', 
-//             { ...formData, email }, 
+//             const response = await axios.post('http://localhost:8000/api/v1/users/book-appointment', 
+//             { ...formData }, 
 //             {
-//                 headers: { Authorization: `Bearer ${token}` }
+//                 headers: { Authorization: `Bearer ${user.token}` }
 //             });
 //             console.log('Booking created:', response.data);
 //             alert('Booking Successful!');
-//             // Optionally, reset form fields
 //             setFormData({
 //                 name: '',
 //                 age: '',
@@ -155,7 +147,7 @@
 //                         name="ticketPrice" 
 //                         value={formData.ticketPrice} 
 //                         onChange={handleChange} 
-//                         disabled // To prevent user input, as it's a constant value
+//                         disabled
 //                     />
 //                 </div>
 //                 <button type="submit" className="btn-submit">Book Appointment</button>
@@ -165,6 +157,7 @@
 // };
 
 // export default MyBooking;
+
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import AuthContext from '../Context/AuthContext';
@@ -194,7 +187,9 @@ const MyBooking = () => {
         const fetchBookedSlots = async () => {
             if (formData.appointmentDate) {
                 try {
-                    const response = await axios.get(`http://localhost:5001/api/v1/users/booked-slots?date=${formData.appointmentDate}`);
+                    const response = await axios.post('http://localhost:5001/api/v1/users/booked-slots', {
+                        date: formData.appointmentDate
+                    });
                     setBookedSlots(response.data.bookedSlots);
                 } catch (error) {
                     console.error('Error fetching booked slots:', error);
@@ -222,14 +217,11 @@ const MyBooking = () => {
             return;
         }
 
-        const email = user.email;
-        const token = user.token;
-
         try {
             const response = await axios.post('http://localhost:5001/api/v1/users/book-appointment', 
-            { ...formData, email }, 
+            { ...formData }, 
             {
-                headers: { Authorization: `Bearer ${token}` }
+                headers: { Authorization: `Bearer ${user.token}` }
             });
             console.log('Booking created:', response.data);
             alert('Booking Successful!');
