@@ -9,6 +9,11 @@ const BookAppointmentPage = () => {
   const [availableSlots, setAvailableSlots] = useState([]);
   const [message, setMessage] = useState('');
 
+
+console.log("availableSlots",availableSlots);
+console.log("Slot",slot);
+
+
   const slots = [
     "10:00 - 10:30",
     "11:00 - 11:30",
@@ -49,29 +54,64 @@ const BookAppointmentPage = () => {
     fetchBookedSlots();
   }, [appointmentDate]); // Removed 'slots' from the dependency array
   
+  // const handleBooking = async () => {
+  //   if (!slot || !appointmentDate) {
+  //     setMessage('Please select a date and slot.');
+  //     return;
+  //   }
+
+  //   try {
+  //     await axios.post('http://localhost:5001/api/v1/users/book-appointment', {
+  //       slot,
+  //       appointmentDate,
+  //     }, )
+      
+
+  //     setMessage('Booking Successful!');
+  //     setSlot('');
+  //     // Refetch available slots after booking
+  //     setAvailableSlots(prevSlots => prevSlots.filter(s => s !== slot));
+  //   } catch (error) {
+  //     console.error('Error booking appointment:', error);
+  //     setMessage('Failed to book appointment.');
+  //   }
+  // };
+
   const handleBooking = async () => {
     if (!slot || !appointmentDate) {
-      setMessage('Please select a date and slot.');
-      return;
+        setMessage('Please select a date and slot.');
+        return;
     }
 
     try {
-      await axios.post('http://localhost:5001/api/v1/users/book-appointment', {
-        slot,
-        appointmentDate,
-      }, {
-        headers: { 'Authorization': `Bearer ${user.token}` }
-      });
+        // Include the token in the headers
+        const config = {
+            headers: {
+                Authorization: `Bearer ${user.token}`, // Include the JWT token here
+            },
+        };
 
-      setMessage('Booking Successful!');
-      setSlot('');
-      // Refetch available slots after booking
-      setAvailableSlots(prevSlots => prevSlots.filter(s => s !== slot));
+        await axios.post(
+            'http://localhost:5001/api/v1/users/book-appointment',
+            {
+                slot,
+                appointmentDate,
+            },
+            config // Pass the config with headers
+        );
+
+        setMessage('Booking Successful!');
+        setSlot('');
+        // Refetch available slots after booking
+        setAvailableSlots((prevSlots) => prevSlots.filter((s) => s !== slot));
     } catch (error) {
-      console.error('Error booking appointment:', error);
-      setMessage('Failed to book appointment.');
+        console.error('Error booking appointment:', error);
+        setMessage('Failed to book appointment.');
     }
-  };
+};
+
+
+
 
   return (
     <div>
