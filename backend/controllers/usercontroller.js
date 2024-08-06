@@ -150,8 +150,28 @@ const getUserDetails = async (req, res) => {
 //     }
 // };
 
+// const getBookedSlots = async (req, res) => {
+//     const { date } = req.body;
+
+//     if (!date) {
+//         return res.status(400).json({ success: false, message: 'Date is required' });
+//     }
+
+//     try {
+//         const bookings = await Booking.find({ appointmentDate: date });
+
+//         const bookedSlots = bookings.map(booking => booking.slot);
+
+//         res.status(200).json({ success: true, bookedSlots });
+//     } catch (error) {
+//         console.error('Error fetching booked slots:', error);
+//         res.status(500).json({ success: false, message: 'Internal server error', error: error.message });
+//     }
+// };
+
+
 const getBookedSlots = async (req, res) => {
-    const { date } = req.body;
+    const { date } = req.query; // Use req.query to get the date
 
     if (!date) {
         return res.status(400).json({ success: false, message: 'Date is required' });
@@ -168,7 +188,6 @@ const getBookedSlots = async (req, res) => {
         res.status(500).json({ success: false, message: 'Internal server error', error: error.message });
     }
 };
-
 
 
 module.exports = { register, login, createBooking, getUserDetails,getBookedSlots };
