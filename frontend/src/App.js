@@ -114,6 +114,7 @@ function App() {
                         <Route path='/register' element={<RegisterPage />} />
                         <Route path='/home' element={<Home />} />
                         <Route path='/booking' element={<BookAppointmentPage />} />
+                        
                     </Routes>
                 </AuthContext.Provider>
             </BrowserRouter>
