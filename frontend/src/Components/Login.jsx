@@ -1,13 +1,10 @@
-
-
-
-
 import React, { useContext } from 'react';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AuthContext from '../Context/AuthContext';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom'
+import "./Style/Login.css"
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -31,27 +28,29 @@ const LoginPage = () => {
     };
 
     return (
-        <div>
+        <div className="login-container">
             <ToastContainer />
-            <h2>Login</h2>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Email"
-                    required
-                />
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Password"
-                    required
-                />
-                <button type="submit">Login</button>
-                <p>Don't have an account? <Link to="/register">Sign up</Link></p>
-            </form>
+            <div className="login-form">
+                <h2>Login</h2>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Email"
+                        required
+                    />
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Password"
+                        required
+                    />
+                    <button type="submit">Login</button>
+                    <p>Don't have an account? <Link to="/register">Sign up</Link></p>
+                </form>
+            </div>
         </div>
     );
 };

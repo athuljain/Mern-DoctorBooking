@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import finddoctor from "../Image/finddoctor.png";
 import calender from "../Image/calender.png";
 import { BsArrowRightCircleFill } from "react-icons/bs";
+import "./Style/Home.css"
 
 function Home() {
   return (
@@ -22,7 +22,7 @@ function Home() {
           </div>
 
           <div className="content-end">
-            <h1 className="h1-end">Providing best medical services</h1>
+            <h1 className="h1-end">Providing the best medical services</h1>
             <p className="p-end">
               World-class care for everyone. Our health system offers unmatched, expert health care.
             </p>

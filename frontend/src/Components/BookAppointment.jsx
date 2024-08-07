@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import AuthContext from "../Context/AuthContext";
 import axios from "axios";
+import './Style/Booking.css'; 
 
 const BookAppointmentPage = () => {
   const { user } = useContext(AuthContext);
@@ -22,7 +23,6 @@ const BookAppointmentPage = () => {
     "15:00 - 15:30",
   ];
 
-  // Fetch booked slots whenever the appointment date or token changes
   useEffect(() => {
     const fetchBookedSlots = async () => {
       if (appointmentDate) {
@@ -101,48 +101,50 @@ const BookAppointmentPage = () => {
   };
 
   return (
-    <div>
-      <h1>Book an Appointment</h1>
-      <div>
-        <label>
-          Appointment Date:
-          <input
-            type="date"
-            value={appointmentDate}
-            onChange={(e) => setAppointmentDate(e.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <label>
-          Slot:
-          <select
-            value={slot}
-            onChange={(e) => setSlot(e.target.value)}
-            disabled={!availableSlots.length}
-          >
-            <option value="">Select a slot</option>
-            {availableSlots.length > 0 ? (
-              availableSlots.map((availableSlot, index) => (
-                <option key={index} value={availableSlot}>
-                  {availableSlot}
+    <div className="book-appointment-container">
+      <div className="book-appointment-form">
+        <h1>Book an Appointment</h1>
+        <div>
+          <label>
+            Appointment Date:
+            <input
+              type="date"
+              value={appointmentDate}
+              onChange={(e) => setAppointmentDate(e.target.value)}
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Slot:
+            <select
+              value={slot}
+              onChange={(e) => setSlot(e.target.value)}
+              disabled={!availableSlots.length}
+            >
+              <option value="">Select a slot</option>
+              {availableSlots.length > 0 ? (
+                availableSlots.map((availableSlot, index) => (
+                  <option key={index} value={availableSlot}>
+                    {availableSlot}
+                  </option>
+                ))
+              ) : (
+                <option value="" disabled>
+                  No slots available
                 </option>
-              ))
-            ) : (
-              <option value="" disabled>
-                No slots available
-              </option>
-            )}
-          </select>
-        </label>
+              )}
+            </select>
+          </label>
+        </div>
+        <button
+          onClick={handleBooking}
+          disabled={!slot || !appointmentDate || !availableSlots.length}
+        >
+          Book Appointment
+        </button>
+        {message && <p>{message}</p>}
       </div>
-      <button
-        onClick={handleBooking}
-        disabled={!slot || !appointmentDate || !availableSlots.length}
-      >
-        Book Appointment
-      </button>
-      {message && <p>{message}</p>}
     </div>
   );
 };
