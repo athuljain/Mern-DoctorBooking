@@ -75,7 +75,9 @@ const login = async (req, res) => {
 };
 
 
-// controllers/userController.js
+
+
+
 const createBooking = async (req, res) => {
     const { slot, appointmentDate } = req.body;
     const ticketPrice = 100; // Constant ticket price
@@ -99,7 +101,6 @@ const createBooking = async (req, res) => {
 
         // Add booking to user's bookings
         const user = await User.findById(userId);
-
         user.bookings.push(savedBooking._id);
         await user.save();
 
@@ -109,6 +110,8 @@ const createBooking = async (req, res) => {
         res.status(500).json({ success: false, message: 'Internal server error', error: error.message });
     }
 };
+
+module.exports = createBooking;
 
 
 
@@ -133,15 +136,29 @@ const getUserDetails = async (req, res) => {
 
 
 
+
 const getBookedSlots = async (req, res) => {
-    const { date } = req.query; // Use req.query to get the date
+    const { date } = req.query;
 
     if (!date) {
         return res.status(400).json({ success: false, message: 'Date is required' });
     }
 
     try {
-        const bookings = await Booking.find({ appointmentDate: date });
+        // Create a date object for the start of the day (00:00:00) and the end of the day (23:59:59)
+        const startDate = new Date(date);
+        startDate.setHours(0, 0, 0, 0);
+        
+        const endDate = new Date(date);
+        endDate.setHours(23, 59, 59, 999);
+
+        // Query the bookings within the date range
+        const bookings = await Booking.find({
+            appointmentDate: {
+                $gte: startDate,
+                $lte: endDate
+            }
+        });
 
         const bookedSlots = bookings.map(booking => booking.slot);
 
@@ -151,6 +168,7 @@ const getBookedSlots = async (req, res) => {
         res.status(500).json({ success: false, message: 'Internal server error', error: error.message });
     }
 };
+
 
 
 module.exports = { register, login, createBooking, getUserDetails,getBookedSlots };
