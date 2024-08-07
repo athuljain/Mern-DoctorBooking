@@ -9,8 +9,13 @@ const UserDetailsPage = () => {
     useEffect(() => {
         const fetchUserDetails = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/v1/users/user-details', 
-                    { headers: { Authorization: user.token } }
+                const config = {
+                    headers: {
+                      Authorization: `Bearer ${user.token}`,
+                    },
+                  };
+                const response = await axios.get('http://localhost:5001/api/v1/users/user-details',config
+                 
                 );
                 setUserDetails(response.data.data);
             } catch (error) {

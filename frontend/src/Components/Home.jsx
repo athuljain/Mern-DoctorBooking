@@ -10,6 +10,7 @@ function Home() {
     <div className="hero_section">
       <div className="container">
         <div className="flex">
+          <Link to={"/user"}>User</Link>
           <div className="content">
             <h1 className="heading">We help patients live a healthy, longer life.</h1>
             <div className="image">

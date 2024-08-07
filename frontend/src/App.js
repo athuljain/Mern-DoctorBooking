@@ -6,6 +6,9 @@ import RegisterPage from './Components/Register';
 import AuthContext from './Context/AuthContext';
 import Home from './Components/Home';
 import BookAppointmentPage from './Components/BookAppointment';
+import UserDetailsPage from './Components/UserDetailsPage';
+import AdminLogin from './Components/AdminLogin';
+import AdminDashBoard from './Components/AdminDashboard';
 
 function App() {
     const [name, setName] = useState('');
@@ -52,6 +55,10 @@ function App() {
                         <Route path='/register' element={<RegisterPage />} />
                         <Route path='/home' element={<Home />} />
                         <Route path='/booking' element={<BookAppointmentPage />} />
+                        <Route path='/user' element={<UserDetailsPage />}/>
+
+                        <Route path='/adminlogin' element={<AdminLogin />}/>
+                        <Route path='/admin' element={<AdminDashBoard/>}/>
 
                     </Routes>
                 </AuthContext.Provider>
