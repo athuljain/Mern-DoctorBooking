@@ -112,9 +112,31 @@ const rejectBooking = async (req, res) => {
 //     }
 // };
 
+// const getAllAcceptedBookings = async (req, res) => {
+//     try {
+//         const { date } = req.query; // Get date from query parameter
+//         let filter = { status: 'accepted' };
+
+//         if (date) {
+//             const startOfDay = new Date(date);
+//             startOfDay.setHours(0, 0, 0, 0);
+//             const endOfDay = new Date(date);
+//             endOfDay.setHours(23, 59, 59, 999);
+
+//             filter.appointmentDate = { $gte: startOfDay, $lte: endOfDay }; // Correct field
+//             console.log('Date Filter:', filter); // Debug log
+//         }
+
+//         const bookings = await Booking.find(filter).populate('user');
+//         res.status(200).json({ success: true, data: bookings });
+//     } catch (error) {
+//         console.error('Error fetching accepted bookings:', error);
+//         res.status(500).json({ success: false, message: 'Internal server error', error: error.message });
+//     }
+// };
 const getAllAcceptedBookings = async (req, res) => {
     try {
-        const { date } = req.query; // Get date from query parameter
+        const { date } = req.query;
         let filter = { status: 'accepted' };
 
         if (date) {
@@ -123,8 +145,7 @@ const getAllAcceptedBookings = async (req, res) => {
             const endOfDay = new Date(date);
             endOfDay.setHours(23, 59, 59, 999);
 
-            filter.appointmentDate = { $gte: startOfDay, $lte: endOfDay }; // Correct field
-            console.log('Date Filter:', filter); // Debug log
+            filter.appointmentDate = { $gte: startOfDay, $lte: endOfDay };
         }
 
         const bookings = await Booking.find(filter).populate('user');
