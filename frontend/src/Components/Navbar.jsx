@@ -5,13 +5,13 @@ import './Style/Navbar.css';
 const Navbar = () => {
     return (
         <nav className="navbar">
-            <div className="navbar-logo">MyApp</div>
+            <div className="navbar-logo">Book My Doctor</div>
             <ul className="navbar-links">
                 <li>
-                    <a href="#home">Home</a>
+                    <a href="/home">Home</a>
                 </li>
                 <li>
-                    <a href="#about">About</a>
+                    <a href="#a">About</a>
                 </li>
                 <li>
                     <a href="/user">
