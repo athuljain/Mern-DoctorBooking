@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import finddoctor from "../Image/finddoctor.png";
+// import finddoctor from "../Image/finddoctor.png";
 import calender from "../Image/calender.png";
 import { BsArrowRightCircleFill } from "react-icons/bs";
 import "./Style/Home.css"
-import Navbar from './Navbar';
+// import Navbar from './Navbar';
 
 function Home() {
   return (

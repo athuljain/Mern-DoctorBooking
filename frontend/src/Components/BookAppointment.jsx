@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import AuthContext from "../Context/AuthContext";
 import axios from "axios";
 import './Style/Booking.css'; 
-import Navbar from "./Navbar";
+
 
 const BookAppointmentPage = () => {
   const { user } = useContext(AuthContext);

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import AuthContext from '../Context/AuthContext';
 import './Style/UserDetails.css'; // Ensure this CSS file contains the styles below
-import Navbar from './Navbar';
+// import Navbar from './Navbar';
 
 const UserDetailsPage = () => {
     const [userDetails, setUserDetails] = useState(null);
