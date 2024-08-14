@@ -14,7 +14,7 @@ const Navbar = () => {
                     <a href="#about">About</a>
                 </li>
                 <li>
-                    <a href="#user">
+                    <a href="/user">
                         <FaUser className="user-icon" /> User
                     </a>
                 </li>

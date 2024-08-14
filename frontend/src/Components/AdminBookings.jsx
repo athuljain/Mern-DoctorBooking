@@ -1,6 +1,3 @@
-
-
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
@@ -46,6 +43,7 @@ export default function AdminBookings() {
                     onChange={(date) => setSelectedDate(date)}
                     dateFormat="yyyy/MM/dd"
                     placeholderText="Select a date"
+                    style={styles.datePicker}
                 />
             </div>
             {bookings.length > 0 ? (
@@ -63,7 +61,7 @@ export default function AdminBookings() {
                             <tr key={booking._id}>
                                 <td style={styles.td}>{booking.user.name}</td>
                                 <td style={styles.td}>{booking.user.email}</td>
-                                <td style={styles.td}>{new Date(booking.appointmentDate).toLocaleDateString()}</td> {/* Display Date */}
+                                <td style={styles.td}>{new Date(booking.appointmentDate).toLocaleDateString()}</td>
                                 <td style={styles.td}>{booking.slot}</td>
                             </tr>
                         ))}
@@ -77,5 +75,45 @@ export default function AdminBookings() {
 }
 
 const styles = {
-   
+    container: {
+        padding: '20px',
+        backgroundColor: '#2F4F4F', /* Dark Green */
+        color: '#ADD8E6', /* Light Blue */
+        borderRadius: '10px',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+        minHeight: '100vh',
+    },
+    heading: {
+        marginBottom: '20px',
+    },
+    datePickerContainer: {
+        marginBottom: '20px',
+    },
+    datePicker: {
+        backgroundColor: '#ADD8E6', /* Light Blue */
+        border: 'none',
+        borderRadius: '5px',
+        padding: '10px',
+        color: '#2F4F4F', /* Dark Green */
+    },
+    table: {
+        width: '100%',
+        borderCollapse: 'collapse',
+    },
+    th: {
+        backgroundColor: '#4CAF50', /* Green */
+        color: 'white',
+        padding: '10px',
+        border: '1px solid #ddd',
+        textAlign: 'left',
+    },
+    td: {
+        padding: '10px',
+        border: '1px solid #ddd',
+        textAlign: 'left',
+    },
+    noBookings: {
+        textAlign: 'center',
+        color: '#fff',
+    },
 };

@@ -1,0 +1,84 @@
+/* Set background for the entire page */
+.login-container {
+  background-color: #2F4F4F; /* Dark Green */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styling the login form */
+.login-form {
+  background-color: #F5F5DC; /* Light Yellow */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Form heading */
+.login-form h2 {
+  color: #2F4F4F; /* Dark Green */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Input fields */
+.login-form input[type="email"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Input fields focus effect */
+.login-form input[type="email"]:focus,
+.login-form input[type="password"]:focus {
+  border-color: #2F4F4F; /* Dark Green */
+  outline: none;
+  box-shadow: 0 0 5px rgba(47, 79, 79, 0.5);
+}
+
+/* Submit button */
+.login-form button[type="submit"] {
+  width: 100%;
+  background-color: #2F4F4F; /* Dark Green */
+  color: #F5F5DC; /* Light Yellow */
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.login-form button[type="submit"]:hover {
+  background-color: #3E7067; /* Slightly lighter shade of dark green */
+}
+
+/* Link to registration page */
+.login-form p {
+  text-align: center;
+  color: #2F4F4F; /* Dark Green */
+}
+
+.login-form p a {
+  color: #2F4F4F; /* Dark Green */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-form p a:hover {
+  text-decoration: underline;
+}
+
+/* Toast notifications */
+.Toastify__toast--success {
+  background-color: #3E7067; /* Slightly lighter shade of dark green */
+}
+
+.Toastify__toast--error {
+  background-color: #8B0000; /* Dark Red for error */
+}

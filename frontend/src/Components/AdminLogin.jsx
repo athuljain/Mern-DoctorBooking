@@ -7,7 +7,7 @@ export default function AdminLogin() {
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
 
-    const nav=useNavigate()
+    const nav = useNavigate();
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -15,10 +15,8 @@ export default function AdminLogin() {
         try {
             const response = await axios.post('http://localhost:5001/api/admin-login', { email, password });
             setMessage(response.data.message);
-            nav("/admin")
-
             localStorage.setItem('token', response.data.token);
-            // You can also store other details if needed
+            nav("/admin");
         } catch (error) {
             setMessage('Login failed: ' + (error.response?.data || error.message));
         }
@@ -56,5 +54,53 @@ export default function AdminLogin() {
 }
 
 const styles = {
-    
+    container: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
+        backgroundColor: '#2F4F4F', /* Dark Green */
+        color: '#ADD8E6', /* Light Blue */
+        padding: '20px',
+        borderRadius: '10px',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+    },
+    heading: {
+        marginBottom: '20px',
+        textAlign: 'center',
+    },
+    form: {
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100%',
+        maxWidth: '400px',
+    },
+    inputGroup: {
+        marginBottom: '15px',
+    },
+    label: {
+        display: 'block',
+        marginBottom: '5px',
+    },
+    input: {
+        width: '100%',
+        padding: '10px',
+        borderRadius: '5px',
+        border: '1px solid #ddd',
+        boxSizing: 'border-box',
+    },
+    button: {
+        padding: '10px',
+        backgroundColor: '#4CAF50', /* Green */
+        color: 'white',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        fontSize: '16px',
+    },
+    message: {
+        marginTop: '20px',
+        textAlign: 'center',
+    },
 };

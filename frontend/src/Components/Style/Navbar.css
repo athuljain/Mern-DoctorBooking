@@ -1,0 +1,49 @@
+/* Navbar container */
+.navbar {
+    background-color: #4a75a4; /* Dark Green */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #F5F5DC; /* Light Yellow */
+}
+
+/* Logo */
+.navbar-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #F5F5DC; /* Light Yellow */
+}
+
+/* Navbar links container */
+.navbar-links {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar links */
+.navbar-links li {
+    font-size: 18px;
+}
+
+/* Navbar link styling */
+.navbar-links li a {
+    text-decoration: none;
+    color: #F5F5DC; /* Light Yellow */
+    transition: color 0.3s ease;
+}
+
+/* Navbar link hover effect */
+.navbar-links li a:hover {
+    color: #E8E8C2; /* Slightly lighter yellow for hover effect */
+}
+
+/* User icon styling */
+.user-icon {
+    margin-right: 5px;
+    vertical-align: middle;
+    color: #F5F5DC; /* Light Yellow */
+}

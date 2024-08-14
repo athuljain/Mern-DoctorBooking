@@ -1,0 +1,96 @@
+/* Body styling for the home page */
+.HomeBody {
+  background-color: #2F4F4F; /* Dark Green */
+  color: #ADD8E6; /* Light Blue */
+  font-family: Arial, sans-serif;
+}
+
+/* Hero section styling */
+.hero_section {
+  padding: 50px 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Flexbox container to align elements */
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Main content heading */
+.content .heading {
+  font-size: 36px;
+  color: #ADD8E6; /* Light Blue */
+  margin-bottom: 20px;
+}
+
+/* Image styling */
+.content .image img {
+  border-radius: 10px;
+  max-width: 100%;
+  height: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Content-end styling */
+.content-end {
+  text-align: right;
+}
+
+.content-end .h1-end {
+  font-size: 28px;
+  color: #ADD8E6; /* Light Blue */
+  margin-bottom: 10px;
+}
+
+.content-end .p-end {
+  font-size: 18px;
+  color: #B0E0E6; /* Slightly lighter shade of light blue */
+}
+
+/* Section styling */
+.section {
+  margin-top: 40px;
+}
+
+/* Book doctor container */
+.book-doctor {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background-color: #3E7067; /* Slightly lighter shade of dark green */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Book doctor image styling */
+.book-doctor .book-image img {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Book doctor heading */
+.book-doctor .book-h2 {
+  font-size: 24px;
+  color: #ADD8E6; /* Light Blue */
+  margin-bottom: 10px;
+}
+
+/* Arrow button styling */
+.book-doctor .arrow-btn {
+  display: inline-block;
+  color: #ADD8E6; /* Light Blue */
+  transition: transform 0.3s ease;
+}
+
+.book-doctor .arrow-btn:hover {
+  transform: scale(1.1);
+}

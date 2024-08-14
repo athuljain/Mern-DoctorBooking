@@ -1,0 +1,39 @@
+.user-details-container {
+   
+    padding: 20px;
+    background-color: #2F4F4F; /* Dark Green */
+    color: #ADD8E6; /* Light Blue */
+    min-height: 100vh;
+}
+
+.user-details-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.user-info p {
+    margin: 10px 0;
+}
+
+.booking-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.booking-list li {
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.loading {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #ADD8E6; /* Light Blue */
+}

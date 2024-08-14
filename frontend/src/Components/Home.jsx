@@ -9,11 +9,11 @@ import Navbar from './Navbar';
 function Home() {
   return (
     <div className='HomeBody'>
-      <Navbar />
+      {/* <Navbar /> */}
     <div className="hero_section">
       <div className="container">
         <div className="flex">
-          <Link to={"/user"}>User</Link>
+        
           <div className="content">
             <h1 className="heading">We help patients live a healthy, longer life.</h1>
             <div className="image">

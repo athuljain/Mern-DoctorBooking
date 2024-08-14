@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import AuthContext from '../Context/AuthContext';
-import "./Style/UserDetails.css"
+import './Style/UserDetails.css'; // Ensure this CSS file contains the styles below
+import Navbar from './Navbar';
 
 const UserDetailsPage = () => {
     const [userDetails, setUserDetails] = useState(null);
@@ -12,12 +13,10 @@ const UserDetailsPage = () => {
             try {
                 const config = {
                     headers: {
-                      Authorization: `Bearer ${user.token}`,
+                        Authorization: `Bearer ${user.token}`,
                     },
-                  };
-                const response = await axios.get('http://localhost:5001/api/v1/users/user-details',config
-                 
-                );
+                };
+                const response = await axios.get('http://localhost:5001/api/v1/users/user-details', config);
                 setUserDetails(response.data.data);
             } catch (error) {
                 console.error('Fetching user details failed:', error);
@@ -27,22 +26,29 @@ const UserDetailsPage = () => {
         fetchUserDetails();
     }, [user]);
 
-    if (!userDetails) return <div>Loading...</div>;
+    if (!userDetails) return <div className="loading">Loading...</div>;
 
     return (
-        <div>
-            <h2>User Details</h2>
-            <p>Name: {userDetails.name}</p>
-            <p>Email: {userDetails.email}</p>
-            <p>Phone: {userDetails.phone}</p>
-            <p>Gender: {userDetails.gender}</p>
-            <p>Age: {userDetails.age}</p>
-            <h3>Bookings</h3>
-            <ul>
-                {userDetails.bookings.map((booking) => (
-                    <li key={booking._id}>{booking.slot} - {booking.appointmentDate}</li>
-                ))}
-            </ul>
+        <div className="user-details-container">
+            {/* <Navbar /> */}
+            <div className="user-details-content">
+                <h2>User Details</h2>
+                <div className="user-info">
+                    <p><strong>Name:</strong> {userDetails.name}</p>
+                    <p><strong>Email:</strong> {userDetails.email}</p>
+                    <p><strong>Phone:</strong> {userDetails.phone}</p>
+                    <p><strong>Gender:</strong> {userDetails.gender}</p>
+                    <p><strong>Age:</strong> {userDetails.age}</p>
+                </div>
+                <h3>Bookings</h3>
+                <ul className="booking-list">
+                    {userDetails.bookings.map((booking) => (
+                        <li key={booking._id}>
+                            {booking.slot} - {new Date(booking.appointmentDate).toLocaleDateString()}
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 };

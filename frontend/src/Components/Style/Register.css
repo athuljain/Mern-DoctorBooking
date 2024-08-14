@@ -1,0 +1,72 @@
+/* Set background for the entire page */
+.register-container {
+  background-color: #2F4F4F; /* Dark Green */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styling the registration form */
+.register-form {
+  background-color: #F5F5DC; /* Light Yellow */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Form heading */
+.register-form h2 {
+  color: #2F4F4F; /* Dark Green */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Input fields */
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="password"],
+.register-form input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Input fields focus effect */
+.register-form input[type="text"]:focus,
+.register-form input[type="email"]:focus,
+.register-form input[type="password"]:focus,
+.register-form input[type="number"]:focus {
+  border-color: #2F4F4F; /* Dark Green */
+  outline: none;
+  box-shadow: 0 0 5px rgba(47, 79, 79, 0.5);
+}
+
+/* Submit button */
+.register-form button[type="submit"] {
+  width: 100%;
+  background-color: #2F4F4F; /* Dark Green */
+  color: #F5F5DC; /* Light Yellow */
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.register-form button[type="submit"]:hover {
+  background-color: #3E7067; /* Slightly lighter shade of dark green */
+}
+
+/* Toast notifications */
+.Toastify__toast--success {
+  background-color: #3E7067; /* Slightly lighter shade of dark green */
+}
+
+.Toastify__toast--error {
+  background-color: #8B0000; /* Dark Red for error */
+}

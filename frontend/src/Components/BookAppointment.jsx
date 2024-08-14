@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import AuthContext from "../Context/AuthContext";
 import axios from "axios";
 import './Style/Booking.css'; 
+import Navbar from "./Navbar";
 
 const BookAppointmentPage = () => {
   const { user } = useContext(AuthContext);
@@ -102,6 +103,7 @@ const BookAppointmentPage = () => {
 
   return (
     <div className="book-appointment-container">
+      {/* <Navbar /> */}
       <div className="book-appointment-form">
         <h1>Book an Appointment</h1>
         <div>

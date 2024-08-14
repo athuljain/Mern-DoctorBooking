@@ -11,6 +11,8 @@ import AdminLogin from './Components/AdminLogin';
 import AdminDashBoard from './Components/AdminDashboard';
 import AdminPage from './Components/AdminPage';
 import AdminBookings from './Components/AdminBookings';
+import Navbar from './Components/Navbar';
+import Footer from './Components/Footer';
 
 function App() {
     const [name, setName] = useState('');
@@ -52,7 +54,9 @@ function App() {
         <div className="App">
             <BrowserRouter>
                 <AuthContext.Provider value={values}>
+                <Navbar/>
                     <Routes>
+                       
                         <Route path='/' element={<LoginPage />} />
                         <Route path='/register' element={<RegisterPage />} />
                         <Route path='/home' element={<Home />} />
@@ -66,6 +70,7 @@ function App() {
 
                     </Routes>
                 </AuthContext.Provider>
+                <Footer/>
             </BrowserRouter>
         </div>
     );
