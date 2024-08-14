@@ -4,9 +4,12 @@ import finddoctor from "../Image/finddoctor.png";
 import calender from "../Image/calender.png";
 import { BsArrowRightCircleFill } from "react-icons/bs";
 import "./Style/Home.css"
+import Navbar from './Navbar';
 
 function Home() {
   return (
+    <div className='HomeBody'>
+      <Navbar />
     <div className="hero_section">
       <div className="container">
         <div className="flex">
@@ -43,6 +46,7 @@ function Home() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

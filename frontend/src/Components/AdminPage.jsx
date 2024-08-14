@@ -285,43 +285,5 @@ export default function AdminPage() {
 }
 
 const styles = {
-    container: {
-        padding: '20px',
-    },
-    heading: {
-        marginBottom: '20px',
-        textAlign: 'center',
-    },
-    table: {
-        width: '100%',
-        borderCollapse: 'collapse',
-    },
-    th: {
-        border: '1px solid #ddd',
-        padding: '8px',
-        textAlign: 'left',
-        backgroundColor: '#f2f2f2',
-    },
-    td: {
-        border: '1px solid #ddd',
-        padding: '8px',
-        textAlign: 'left',
-    },
-    acceptButton: {
-        marginRight: '10px',
-        padding: '5px 10px',
-        backgroundColor: '#4CAF50',
-        color: 'white',
-        border: 'none',
-        borderRadius: '3px',
-        cursor: 'pointer',
-    },
-    rejectButton: {
-        padding: '5px 10px',
-        backgroundColor: '#f44336',
-        color: 'white',
-        border: 'none',
-        borderRadius: '3px',
-        cursor: 'pointer',
-    },
+
 };

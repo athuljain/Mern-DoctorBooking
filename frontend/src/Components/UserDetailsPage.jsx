@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import AuthContext from '../Context/AuthContext';
+import "./Style/UserDetails.css"
 
 const UserDetailsPage = () => {
     const [userDetails, setUserDetails] = useState(null);

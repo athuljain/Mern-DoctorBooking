@@ -56,51 +56,5 @@ export default function AdminLogin() {
 }
 
 const styles = {
-    container: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100vh',
-        backgroundColor: '#f4f4f4',
-    },
-    heading: {
-        marginBottom: '20px',
-        color: '#333',
-    },
-    form: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        width: '300px',
-    },
-    inputGroup: {
-        marginBottom: '15px',
-        width: '100%',
-    },
-    label: {
-        marginBottom: '5px',
-        color: '#555',
-    },
-    input: {
-        width: '100%',
-        padding: '10px',
-        fontSize: '16px',
-        borderRadius: '5px',
-        border: '1px solid #ccc',
-    },
-    button: {
-        width: '100%',
-        padding: '10px',
-        fontSize: '16px',
-        color: '#fff',
-        backgroundColor: '#007BFF',
-        border: 'none',
-        borderRadius: '5px',
-        cursor: 'pointer',
-    },
-    message: {
-        marginTop: '20px',
-        color: 'red',
-    },
+    
 };
