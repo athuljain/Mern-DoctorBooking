@@ -17,6 +17,7 @@ const LoginPage = () => {
             const { token, user } = response.data; // Expecting user details from response
             login(token, user); // Updated login function
             toast.success('Login successful!');
+            alert("Login successful!")
             navigate('/home');
         } catch (error) {
             if (error.response && error.response.data) {

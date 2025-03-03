@@ -15,7 +15,12 @@ const RegisterPage = () => {
         try {
             const response = await axios.post('http://localhost:5001/api/v1/users/register', { name, email, password, phone, gender, age });
             toast.success('Registration successful!');
+            console.log(response);
+            alert("Registration Succefull")
             navigate('/');
+          
+
+
         } catch (error) {
             if (error.response && error.response.data) {
                 toast.error(`Registration failed: ${error.response.data.message}`);
