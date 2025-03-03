@@ -84,6 +84,7 @@ const BookAppointmentPage = () => {
         { slot, appointmentDate },
         config
       );
+console.log(response);
 
       setMessage("Booking Successful!");
       setSlot("");
