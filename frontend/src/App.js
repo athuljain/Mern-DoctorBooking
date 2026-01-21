@@ -13,6 +13,7 @@ import AdminPage from './Components/AdminPage';
 import AdminBookings from './Components/AdminBookings';
 import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
+import Chatbot from './Components/Chatbot';
 
 function App() {
     const [name, setName] = useState('');
@@ -70,6 +71,8 @@ function App() {
 
                     </Routes>
                 </AuthContext.Provider>
+                <Chatbot />
+                
                 <Footer/>
             </BrowserRouter>
         </div>

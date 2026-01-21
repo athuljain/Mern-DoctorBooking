@@ -4,11 +4,13 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const jwt = require("jsonwebtoken");
+const { handleChat } = require("./controllers/ChatController")
 
 dotenv.config();
 
 const adminRoute = require("./routes/admin");
 const userRoute = require("./routes/user");
+
 
 const app = express();
 const port = process.env.PORT 
@@ -38,6 +40,13 @@ app.use(cors(corsOptions));
 app.use("/api", adminRoute);
 app.use("/api/v1/users", userRoute);
 
+app.post("/api/chat", handleChat);
+
+
+app.get("/api/history", async (req, res) => {
+  const history = await require("./models/Chat").find().sort({ timestamp: 1 });
+  res.json(history);
+});
 
 
 connect().then(() => {
